@@ -24,8 +24,16 @@ Documentation
 All code written in this project should be self-documenting (i.e. very simple and well-named) and/or well-commented.
 For a great guide on proper code maintenance read [this page](http://thc.org/root/phun/unmaintain.html).
 
+What do I work on?
+------------------
+Check the "Issues" tab at the top of this page - it should have a list of things needed to be done/fixed.
+
 This file
 ---------
 This document is a .md markdown file - basically a pretty readme.
 For more information on this and how to edit it, check out [this page](http://daringfireball.net/projects/markdown/basics) and [this other page](http://github.github.com/github-flavored-markdown/).
 I suggest using [Sublime Text](http://www.sublimetext.com/) as your editor, as it's awesome.
+
+Don't dump all your folder's files here!
+----------------------------------------
+Be sure to use the [.gitignore](https://help.github.com/articles/ignoring-files) file, so that you only put files that *everyone* in the project will use.
