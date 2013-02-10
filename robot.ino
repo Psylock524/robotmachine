@@ -6,7 +6,13 @@
     12/28/2012
     
     by: Chad Schaffer (cmschaffer@gmail.com)
-    
+   
+   NOTE: all of this is antiquated to the point that it is probably
+   better to start over, it was my initial code for understanding the 
+   problem, so it may be of interest to the team.
+   
+   "Functions" is good code.
+   
 */
 //pins
 int leftFor = 11;
