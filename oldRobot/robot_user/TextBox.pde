@@ -66,7 +66,7 @@ class TextBox
     String InputText()
     {
  
-      return "go fuck yourself";
+      return "Chad is a happy bunny";
     }
     
     void Visual()
