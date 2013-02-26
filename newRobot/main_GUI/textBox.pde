@@ -12,7 +12,7 @@ class TextBox {
   color m_strokeColor = 127;
   color m_textColor = 255;
   int m_textXOffset = 5;
-  int m_textYOffset = 15;
+  int m_textYOffset = 0;
   
   TextBox(int xPos, int yPos) {
     m_xPos = xPos;
@@ -76,7 +76,6 @@ class TextBox {
   }
   
   void write(char Char) {
-    println("char: " + str(Char));
     m_text += Char - '0';
   }
   
@@ -85,12 +84,10 @@ class TextBox {
   }
   
   void write(int number) {
-    println("number: " + number);
     m_text += str(number);
   }
   
   void writeln(char Char) {
-    println("char: " + str(Char));
     m_text += (Char + '\n');
   }
   
@@ -100,6 +97,10 @@ class TextBox {
   
   void writeln(int number) {
     m_text += (str(number) + '\n');
+  }
+  
+  String getText() {
+    return m_text;
   }
   
   void clear() {
@@ -120,53 +121,5 @@ class TextBox {
     textAlign(LEFT,BOTTOM);
     textSize(m_textSize);
     text(m_text, m_xPos + m_textXOffset, m_yPos + m_height - m_textYOffset);
-  }
-    
-  void display(color pColor, color textColor) {
-    fill(pColor);
-    stroke(m_strokeColor);
-    strokeWeight(1);
-    rect(m_xPos, m_yPos, m_width, m_height);
-    
-    fill(textColor);
-    textAlign(CENTER,TOP);
-    textSize(m_titleSize);
-    text(m_title, m_xPos + (m_width/2), m_yPos + 5);
-    
-    textAlign(LEFT,BOTTOM);
-    textSize(m_textSize);
-    text(m_text, m_xPos + m_textXOffset, m_yPos + m_height - m_textYOffset);
-  }
-    
-  void display(String text) {
-    fill(m_color);
-    stroke(m_strokeColor);
-    strokeWeight(1);
-    rect(m_xPos, m_yPos, m_width, m_height);
-    
-    fill(m_textColor);
-    textAlign(CENTER,TOP);
-    textSize(m_titleSize);
-    text(m_title, m_xPos + (m_width/2), m_yPos + 5);
-    
-    textAlign(LEFT,BOTTOM);
-    textSize(m_textSize);
-    text(text, m_xPos + m_textXOffset, m_yPos + m_height - m_textYOffset);
-  }
-    
-  void display(String text, color pColor, color textColor) {
-    fill(pColor);
-    stroke(m_strokeColor);
-    strokeWeight(1);
-    rect(m_xPos, m_yPos, m_width, m_height);
-    
-    fill(textColor);
-    textAlign(CENTER,TOP);
-    textSize(m_titleSize);
-    text(m_title, m_xPos + (m_width/2), m_yPos + 5);
-    
-    textAlign(LEFT,BOTTOM);
-    textSize(m_textSize);
-    text(text, m_xPos + m_textXOffset, m_yPos + m_height - m_textYOffset);
   }
 }

@@ -1,11 +1,18 @@
-const int BAUD_RATE = 9600;
+const int BAUD_RATE = 4800;
 
 const int LF_PIN = 11;
 const int LB_PIN = 10;
 const int RF_PIN = 6;
 const int RB_PIN = 5;
 
-int inInts[3];
+const int MOVE_FORWARD = 1;
+const int MOVE_BACKWARD = 2;
+const int TURN_LEFT = 3;
+const int TURN_RIGHT = 4;
+
+int serialFunction;
+const int SERIAL_ARRAY_SIZE = 255;
+int serialVals[255];
 
 void setup() {
   Serial.begin(BAUD_RATE);
@@ -13,57 +20,46 @@ void setup() {
   pinMode(LB_PIN, OUTPUT);
   pinMode(RF_PIN, OUTPUT);
   pinMode(RB_PIN, OUTPUT);
-
-  digitalWrite(LF_PIN, LOW);
-  digitalWrite(LB_PIN, LOW);
-  digitalWrite(RF_PIN, LOW);
-  digitalWrite(RB_PIN, LOW);
 }
 
 void loop() {
-  
-  switch(inInts[0]) {
-  case 0:
-    digitalWrite(LF_PIN, LOW);
-    digitalWrite(LB_PIN, LOW);
-    digitalWrite(RF_PIN, LOW);
-    digitalWrite(RB_PIN, LOW);
-    break;
-  case 1:
-    analogWrite(LF_PIN, 255);
-    digitalWrite(LB_PIN, LOW);
-    digitalWrite(RF_PIN, LOW);
-    digitalWrite(RB_PIN, LOW);
-    break;
-  case 2:
-    digitalWrite(LF_PIN, LOW);
-    analogWrite(LB_PIN, 255);
-    digitalWrite(RF_PIN, LOW);
-    digitalWrite(RB_PIN, LOW);
-    break;
-  case 3:
-    digitalWrite(LF_PIN, LOW);
-    digitalWrite(LB_PIN, LOW);
-    analogWrite(RF_PIN, 255);
-    digitalWrite(RB_PIN, LOW);
-    break;
-  case 4:
-    digitalWrite(LF_PIN, LOW);
-    digitalWrite(LB_PIN, LOW);
-    digitalWrite(RF_PIN, LOW);
-    analogWrite(RB_PIN, 255);
-    break;
-  }
 }
 
+int serialIndex = 0;
 void serialEvent() {
+  while(Serial.available() == 0);
   delay(200);
-  if(Serial.available() > 0) {
-    for(int i = 0; i < sizeof(inInts)-sizeof(int)-1; i++) {
-      inInts[i] = Serial.read();
-      Serial.print(inInts[i] - '0');
-    } Serial.println();
-    Serial.print("Array Size: "); Serial.println(sizeof(inInts)-sizeof(int));
+
+  while(Serial.available() > 0) {
+    serialVals[serialIndex] = Serial.read();
+    serialIndex++;
   }
+  serialIndex = 0;
+
+  while(serialVals[serialIndex] != 0) {
+    switch(serialVals[serialIndex++]) {
+    case MOVE_FORWARD:
+      moveForward(serialVals[serialIndex++], serialVals[serialIndex++]);
+      break;
+    case MOVE_BACKWARD:
+      moveBackward(serialVals[serialIndex++], serialVals[serialIndex++]);
+      break;
+    case TURN_LEFT:
+      turnLeft(serialVals[serialIndex++], serialVals[serialIndex++]);
+      break;
+    case TURN_RIGHT:
+      turnRight(serialVals[serialIndex++], serialVals[serialIndex++]);
+      break;
+    default:
+      break;
+    }
+  }
+  for(int i = 0; i < SERIAL_ARRAY_SIZE; i++) {
+    Serial.write(serialVals[i]);
+    serialVals[i] = 0;
+  }
+  serialIndex = 0;
 }
+
+
 
