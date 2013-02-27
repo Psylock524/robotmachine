@@ -5,8 +5,8 @@ void moveForward(int magnitude, int duration) {
   Serial.println(duration);
   
   if(magnitude >= 0 && magnitude <= 255) {
-    analogWrite(LF_PIN, magnitude*2);
-    analogWrite(RF_PIN, magnitude*2);
+    analogWrite(LF_PIN, magnitude);
+    analogWrite(RF_PIN, magnitude);
     delay(duration*1000);
   }
   
@@ -17,8 +17,8 @@ void moveBackward(int magnitude, int duration) {
   stopMoving();
   
   if(magnitude >= 0 && magnitude <= 255) {
-    analogWrite(LB_PIN, magnitude*2);
-    analogWrite(RB_PIN, magnitude*2);
+    analogWrite(LB_PIN, magnitude);
+    analogWrite(RB_PIN, magnitude);
     delay(duration*1000);
   }
   
@@ -29,8 +29,8 @@ void turnLeft(int magnitude, int duration) {
   stopMoving();
   
   if(magnitude >= 0 && magnitude <= 255) {
-    analogWrite(LB_PIN, magnitude*2);
-    analogWrite(RF_PIN, magnitude*2);
+    analogWrite(LB_PIN, magnitude);
+    analogWrite(RF_PIN, magnitude);
     delay(duration*1000);
   }
   
@@ -41,8 +41,8 @@ void turnRight(int magnitude, int duration) {
   stopMoving();
   
   if(magnitude >= 0 && magnitude <= 255) {
-    analogWrite(LF_PIN, magnitude*2);
-    analogWrite(RB_PIN, magnitude*2);
+    analogWrite(LF_PIN, magnitude);
+    analogWrite(RB_PIN, magnitude);
     delay(duration*1000);
   }
   

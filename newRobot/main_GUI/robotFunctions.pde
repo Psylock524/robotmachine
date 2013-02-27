@@ -16,7 +16,6 @@ void buildCommand(Command command, String inputText) {
         commandInput.prompt(command.getPrompt(command.getCurrentIndex()));
       } else {
         commandsToSend[commandsIndex++] = (command.getCommandNumber());
-        println(byte(command.getCommandNumber()));
         commandList.write(command.getTitle() + ": ");
         for(int i = 0; i < command.getArgNum(); i++) {
           commandsToSend[commandsIndex++] = command.getArg(i);

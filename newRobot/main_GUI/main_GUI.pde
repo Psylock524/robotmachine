@@ -37,7 +37,7 @@ void setup() {
   serial = new Serial(this, serial.list()[0], BAUD_RATE); // Construct serial object, with the applet being this one, the serial port being the first available one, and the baud rate set to the constant made previously
   commandsToSend = new int[255]; // Construct commandsToSend array, setting a number as the amount of "cells" it can contain
   
-  String prompts[] = {"Magnitude (0-127): ", "Duration (seconds): "}; // Create array of strings to use as the promps for the commands  
+  String prompts[] = {"Magnitude (0-255): ", "Duration (seconds; 0-255): "}; // Create array of strings to use as the promps for the commands  
   // Construct the commands for Processing to send to Arduino
   // Arguments are command name, command number (for sending as serial data) in constant form, number of parameters for the function, and the prompts to use
   cmdMoveForward = new Command("Move Forward", MOVE_FORWARD, 2, prompts);
@@ -147,7 +147,7 @@ void mousePressed() { // Does things when the mouse is clicked, called by Proces
 void keyPressed() { // Does things when a key is pressed; called by Processing itself, not the "draw" function
   if(commandInput.isActive()) { // If the input box is ready for typing
     if(Character.isDigit(key)) { // Check if the character being typed is a number
-      commandInput.addChar(key); // If so, add it to the input box
+    commandInput.addChar(key); // If so, add it to the input box
     } else { // Otherwise
       switch(key) { // If it is:
         case ' ': // The space bar
@@ -164,7 +164,7 @@ void keyPressed() { // Does things when a key is pressed; called by Processing i
           commandInput.removeChar(); // Remove the last character from the input box
           break;
         case ENTER:
-          if(inputText.length() > 0) { // If there's any text in the input box
+          if(commandInput.getText().length() > 0) { // If there's any text in the input box
             String inputText = commandInput.getText(); // Get the text from the input box, and store it as a string 
             
             // Check which command is waiting for input, and send the text to it
