@@ -1,7 +1,7 @@
 import processing.serial.*;
 
 Serial serial;
-final static int BAUD_RATE = 9600;
+final static int BAUD_RATE = 4800;
 
 Button upButton;
 Button downButton;

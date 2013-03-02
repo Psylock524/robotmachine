@@ -1,4 +1,4 @@
-const int BAUD_RATE = 9600;
+const int BAUD_RATE = 4800;
 
 const int LF_PIN = 11;
 const int LB_PIN = 10;
