@@ -52,6 +52,14 @@ class Button {
     m_color = pColor;
     m_textColor = textColor;
   }
+  
+  boolean isMouseOver() {
+    if(mouseX >= m_xPos && mouseX <= (m_xPos + m_width) && mouseY >= m_yPos && mouseY <= (m_yPos + m_height)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
     
   void display() {
     fill(m_color);
@@ -87,13 +95,5 @@ class Button {
     fill(textColor);
     textAlign(CENTER, CENTER);
     text(text, m_xPos + (m_width/2), m_yPos + (m_height/2));
-  }
-    
-  boolean isMouseOver() {
-    if(mouseX >= m_xPos && mouseX <= (m_xPos + m_width) && mouseY >= m_yPos && mouseY <= (m_yPos + m_height)) {
-      return true;
-    } else {
-      return false;
-    }
   }
 }
