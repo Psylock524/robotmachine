@@ -6,7 +6,9 @@ void moveForward(int magnitude, int duration) {
   
   if(magnitude >= 0 && magnitude <= 255) {
     analogWrite(LF_PIN, magnitude);
+    digitalWrite(LB_PIN, LOW);
     analogWrite(RF_PIN, magnitude);
+    digitalWrite(RB_PIN, LOW);
     delay(duration*1000);
   }
   
@@ -18,7 +20,9 @@ void moveBackward(int magnitude, int duration) {
   
   if(magnitude >= 0 && magnitude <= 255) {
     analogWrite(LB_PIN, magnitude);
+    digitalWrite(LF_PIN, LOW);
     analogWrite(RB_PIN, magnitude);
+    digitalWrite(RF_PIN, LOW);
     delay(duration*1000);
   }
   
@@ -28,9 +32,12 @@ void moveBackward(int magnitude, int duration) {
 void turnLeft(int magnitude, int duration) {
   stopMoving();
   
+  
   if(magnitude >= 0 && magnitude <= 255) {
     analogWrite(LB_PIN, magnitude);
+    digitalWrite(LF_PIN, LOW);
     analogWrite(RF_PIN, magnitude);
+    digitalWrite(RB_PIN, LOW);
     delay(duration*1000);
   }
   
@@ -42,7 +49,9 @@ void turnRight(int magnitude, int duration) {
   
   if(magnitude >= 0 && magnitude <= 255) {
     analogWrite(LF_PIN, magnitude);
+    digitalWrite(LB_PIN, LOW);
     analogWrite(RB_PIN, magnitude);
+    digitalWrite(RF_PIN, LOW);
     delay(duration*1000);
   }
   

@@ -1,14 +1,14 @@
 const int BAUD_RATE = 4800;
 
-const int LF_PIN = 10;
+const int LF_PIN = 11;
 const int LB_PIN = 9;
-const int RF_PIN = 3;
-const int RB_PIN = 11;
+const int RF_PIN = 10;
+const int RB_PIN = 3;
 const int SEND_PIN = A0;
 
 const int MOVE_FORWARD = 1;
 const int MOVE_BACKWARD = 2;
-const int TURN_LEFT = 3;
+const int TURN_LEFT = 17;
 const int TURN_RIGHT = 4;
 
 int serialFunction;
@@ -41,7 +41,7 @@ void serialEvent() {
   serialIndex = 0;
   
   while(Serial.available() == 0) {
-    if(analogRead(SEND_PIN) > 10)
+    if(analogRead(SEND_PIN) < 10)
       doCommands();
   }
 }

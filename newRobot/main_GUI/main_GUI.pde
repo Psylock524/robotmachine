@@ -1,13 +1,13 @@
 import processing.serial.*; // Allow use of serial library
 
-<<<<<<< HEAD
-Serial serial;
-final static int BAUD_RATE = 4800;
-=======
+//<<<<<<< HEAD
+//Serial serial;
+//final static int BAUD_RATE = 4800;
+//=======
 final static int WINDOW_WIDTH = 1080;
 final static int WINDOW_HEIGHT = 608;
 boolean sketchFullScreen() { return false; } // Whether or not to run in full screen
->>>>>>> 54e1c84c24d98b5634ff159bb391dbdf35065277
+//>>>>>>> 54e1c84c24d98b5634ff159bb391dbdf35065277
 
 Serial serial; // Create new serial object
 final static int BAUD_RATE = 4800; // Baud-Rate constant - Speed at which serial data travels
@@ -20,7 +20,7 @@ final static int MOVE_FORWARD = 1;
 Command cmdMoveBackward;
 final static int MOVE_BACKWARD = 2;
 Command cmdTurnLeft;
-final static int TURN_LEFT = 3;
+final static int TURN_LEFT = 17;
 Command cmdTurnRight;
 final static int TURN_RIGHT = 4;
 
