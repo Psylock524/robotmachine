@@ -1,7 +1,7 @@
 const int BAUD_RATE = 4800;
 
-const int LF_PIN = 11;
-const int LB_PIN = 9;
+const int LF_PIN = 9;
+const int LB_PIN = 11;
 const int RF_PIN = 10;
 const int RB_PIN = 3;
 const int SEND_PIN = A0;
@@ -16,6 +16,14 @@ const int SERIAL_ARRAY_SIZE = 255;
 int serialVals[255];
 int serialIndex = 0;
 
+//sensors
+
+const int FRONT_BUMPER = A4;
+const int REAR_BUMPER = A5;
+const int EYE = A2;
+
+boolean sensorState = false;
+
 
 void setup() {
   Serial.begin(BAUD_RATE);
@@ -23,11 +31,16 @@ void setup() {
   pinMode(LB_PIN, OUTPUT);
   pinMode(RF_PIN, OUTPUT);
   pinMode(RB_PIN, OUTPUT);
-
+  
+  pinMode(FRONT_BUMPER, INPUT);
+  pinMode(REAR_BUMPER, INPUT);
+  pinMode(EYE, INPUT);
   pinMode(SEND_PIN, INPUT);
 }
 
+
 void loop() {
+ sensorState = false;
 }
 
 void serialEvent() {
@@ -42,7 +55,10 @@ void serialEvent() {
   
   while(Serial.available() == 0) {
     if(analogRead(SEND_PIN) < 10)
+    {
+      delay(1000);
       doCommands();
+    }
   }
 }
 
@@ -71,4 +87,3 @@ void doCommands() {
 
   serialIndex = 0;
 }
-
