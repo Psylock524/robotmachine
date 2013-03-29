@@ -1,10 +1,15 @@
 class Command {
   int m_commandNumber;
-  int m_argument[];
+  int m_argument[] = {};
   int m_index = 0;
   String m_title = "";
   String m_promptText[];
   boolean m_waiting = false;
+  
+  Command(String title, int number) {
+    m_title = title;
+    m_commandNumber = number;
+  }
   
   Command(String title, int number, int args, String promptText[]) {
     m_title = title;

@@ -1,8 +1,8 @@
 class Button {
   int m_xPos;
   int m_yPos;
-  int m_width = 50;
-  int m_height = 50;
+  int m_width = 60;
+  int m_height = 60;
   String m_text = "";
   boolean m_toggle = false;
   color m_color = 200;
